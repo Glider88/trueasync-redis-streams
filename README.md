@@ -2,7 +2,7 @@
 
 ### Installation:
 ```shell
-composer require glider88/trueasync-redis-streams
+composer require glider88/async-redis-streams
 ```
 Start docker:
 ```shell
