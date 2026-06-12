@@ -1,0 +1,33 @@
+services:
+  php:
+    container_name: async-redis-streams-php
+    build: .docker/php
+    image: async-redis-streams/php
+    user: docker
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - .docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - .docker/php/custom-php.ini:/usr/local/etc/php/conf.d/custom-php.ini
+      - .:/usr/src/app
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker-async-redis-streams-php"
+    networks: [ app ]
+  composer:
+    container_name: async-redis-streams-composer
+    image: composer
+    user: 1000:1000
+    volumes:
+      - .:/app
+    command: [ 'install', '--ignore-platform-reqs' ]
+  valkey:
+    container_name: async-redis-streams-valkey
+    image: valkey/valkey:9.0.4-alpine
+    command: valkey-server
+    hostname: redis
+    networks: [ app ]
+    ports:
+      - "6379:6379"
+networks:
+  app:
+    driver: bridge

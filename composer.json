@@ -1,0 +1,33 @@
+{
+  "name": "glider88/async-redis-streams",
+  "description": "Redis Streams with TrueAsync",
+  "keywords": ["redis", "trueasync", "stream"],
+  "type": "library",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sakharov Pavel",
+      "email": "s.p.alekseevich@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.6",
+    "predis/predis": "dev-main"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpunit/phpunit": "^13.2@dev",
+    "true-async/ide-helper": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "Glider88\\AsyncRedisStreams\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Glider88\\AsyncRedisStreams\\": "tests/"
+    }
+  }
+}
